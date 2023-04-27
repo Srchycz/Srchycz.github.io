@@ -1,2 +1,2 @@
-http://srchycz.github.io/project/2023/04/25/hello-world/
-http://srchycz.github.io/project
+http://srchycz.github.io/2023/04/25/hello-world/
+http://srchycz.github.io/

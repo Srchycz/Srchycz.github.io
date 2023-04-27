@@ -3,14 +3,14 @@
   <title>Srch&#39;s Blog</title>
   
   
-  <link href="http://srchycz.github.io/project/atom.xml" rel="self"/>
+  <link href="http://srchycz.github.io/atom.xml" rel="self"/>
   
-  <link href="http://srchycz.github.io/project/"/>
+  <link href="http://srchycz.github.io/"/>
   <updated>2023-04-25T10:45:18.867Z</updated>
-  <id>http://srchycz.github.io/project/</id>
+  <id>http://srchycz.github.io/</id>
   
   <author>
-    <name>YCZ</name>
+    <name>Srch_</name>
     
   </author>
   
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://srchycz.github.io/project/2023/04/25/hello-world/"/>
-    <id>http://srchycz.github.io/project/2023/04/25/hello-world/</id>
+    <link href="http://srchycz.github.io/2023/04/25/hello-world/"/>
+    <id>http://srchycz.github.io/2023/04/25/hello-world/</id>
     <published>2023-04-25T10:45:18.867Z</published>
     <updated>2023-04-25T10:45:18.867Z</updated>
     
