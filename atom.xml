@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Srch&#39;s Blog</title>
-  
+  <icon>https://www.gravatar.com/avatar/d74bc5697d6d4e53158b4b8cada68343</icon>
   
   <link href="http://srchycz.github.io/atom.xml" rel="self"/>
   
@@ -11,7 +11,7 @@
   
   <author>
     <name>Srch_</name>
-    
+    <email>2982296464@qq.com</email>
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
