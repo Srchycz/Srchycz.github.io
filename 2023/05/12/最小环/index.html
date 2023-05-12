@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Dijkstra求无向图过某点最小环 | Srch's Blog</title><meta name="author" content="Srch_,2982296464@qq.com"><meta name="copyright" content="Srch_"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由BUAA-OO-2023作业引发的思考">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dijkstra求无向图过某点最小环">
+<meta property="og:url" content="http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/index.html">
+<meta property="og:site_name" content="Srch&#39;s Blog">
+<meta property="og:description" content="由BUAA-OO-2023作业引发的思考">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://srchycz.github.io/img/avatar.jpg">
+<meta property="article:published_time" content="2023-05-11T16:00:00.000Z">
+<meta property="article:modified_time" content="2023-05-11T16:00:00.000Z">
+<meta property="article:author" content="Srch_">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://srchycz.github.io/img/avatar.jpg"><link rel="shortcut icon" href="/img/S.png"><link rel="canonical" href="http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  }
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Dijkstra求无向图过某点最小环',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-05-12 00:00:00'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Srch's Blog" type="application/atom+xml">
+</head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/avatar.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://s2.loli.net/2023/05/05/kKIriQUcbfGNgSD.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="Srch's Blog"><span class="site-name">Srch's Blog</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 列表</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-link"></i><span> 链接</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Dijkstra求无向图过某点最小环</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-05-11T16:00:00.000Z" title="发表于 2023-05-12 00:00:00">2023-05-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-05-11T16:00:00.000Z" title="更新于 2023-05-12 00:00:00">2023-05-12</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Algorithm/">Algorithm</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Dijkstra求无向图过某点最小环"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>该部分针对第十一次作业新增方法<code>queryLeastMoment</code>进行一个效率较高的思路分享</p>
+<p>在理解完JML后，该方法可以概括为，给定一个无向图，求出无向图上过某点的最小环</p>
+<h2 id="魔改-dijkstra"><a href="#魔改-dijkstra" class="headerlink" title="魔改 dijkstra"></a>魔改 dijkstra</h2><h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><p>不妨设无向图为G(V,E)，源点是x，要求出过x点的最小环</p>
+<p>一种可行的思路是，逐个枚举V中的点y(y!&#x3D;x),求出经过x，y的最小环，这个环是满足原本要求的(即经过点x的)，显然，在逐个枚举点y后，其中的最小值即是答案</p>
+<p>那么问题转化为如何快速的求出经过点x,y的最小环，我们考虑求出x-&gt;y的最短路及带一定<strong>限制</strong>的次短路。我们作个约定，称一条以x为起点的路径中从x出发经过的第一个点称作<strong>出点</strong>，那么我们所要求的限制就是<strong>次短路的出点与最短路的出点不同</strong>。</p>
+<p>最短路和带限制的次短路拼起来显然就构成了一个经过x的“环”。我们对所有点都求出类似的最短路和次短路即可更新答案。</p>
+<p>当然，如果仔细想一下，可以发现上文所提到由最短路和带限制的次短路构成的环中，我们只在出点部分作了约束，最短路和次短路在后续部分可能存在重叠，并非严格意义上的环。但是由于我们对出点的限制，在这样最短路和次短路拼接后的路径中，一定包含了一个过x的环，这个将在枚举到两段路径第一次重叠时的顶点被考虑到，从而不会影响正确性。</p>
+<p><img src="https://s2.loli.net/2023/05/12/5VQHD2iEK31jF8T.png" alt="graph.png"></p>
+<p>如上图中1-&gt;3的最短路是：1-&gt;5-&gt;3，带限制的次短路为1-&gt;6-&gt;2-&gt;5-&gt;3,拼接后会有重合（5-&gt;3部分），但是在枚举到5号点时该答案一定会被优化掉，所以不影响正确性。</p>
+<p>幸运的是，要求出从x出发的单源最短路和单源限制次短路是可以在1次<code>dijkstra</code>内完成的！</p>
+<h3 id="实现细节"><a href="#实现细节" class="headerlink" title="实现细节"></a>实现细节</h3><h4 id="dijkstra流程回顾："><a href="#dijkstra流程回顾：" class="headerlink" title="dijkstra流程回顾："></a><code>dijkstra</code>流程回顾：</h4><p>1.初始化</p>
+<p>源点dist[x] &#x3D; 0,与源点直接相连的顶点初始化dist[v]&#x3D;w(x,v)，其他顶点的dist设为极大值</p>
+<p>同时记录一个vis数组，初始化除源点外均为false</p>
+<p>2.找出一个未被标记的、dist最小的顶点u,然后将其对应的vis置为true</p>
+<p>3.扫描u的所有出边，判断是否满足三角形不等式，尝试用dist[u] + w(u,v)更新dist[v]</p>
+<p>4.重复2、3,直到所有节点均被标记</p>
+<h4 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h4><p>在初始化部分中，对于每个点，我们需要记录四个字段</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Path</span> &#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="type">int</span> dist1;<span class="comment">//最短路长</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> dist2;<span class="comment">//次短路长</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> origin1;<span class="comment">//最短路出点</span></span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> origin2;<span class="comment">//次短路出点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>初始化时，<code>dist</code>置极大值(如0x3f3f3f3f)，<code>origin</code>可置-1</p>
+<p>然后将与起点直接相连的顶点的dist1置为相连边的权重，origin1记为该顶点本身的id</p>
+<h4 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h4><p>我们还是每次挑出最短路最小的且未访问过的顶点，记其为u，然后扫描u的所有出边，记出边的另一个顶点为v</p>
+<p>在更新部分，简言之，要用当前点<code>u</code>的最短路和次短路分别去尝试更新目标点<code>v</code>的最短路和次短路</p>
+<p>记<code>dis(u)</code>为到u的最短路，<code>dis2(u)</code>为次短路，<code>ori(u)</code>为最短路的出点，<code>ori2(u)</code>为次短路出点，那么更新的逻辑展示如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> <span class="title function_">update</span><span class="params">(<span class="type">int</span> dist)</span> &#123;</span><br><span class="line">	<span class="keyword">if</span> (dist + w(u,v) &lt; dis(v)) &#123;<span class="comment">//当前v的最短路可被更新</span></span><br><span class="line">    	<span class="keyword">if</span> (ori(u) != ori(v)) &#123;</span><br><span class="line">        	<span class="comment">/*</span></span><br><span class="line"><span class="comment">        	新路径与原最短路出点不同 那么v原先的最短路就可作为次短路</span></span><br><span class="line"><span class="comment">        	把v的最短路赋值给v的次短路 记得也要把出点赋值过去</span></span><br><span class="line"><span class="comment">        	*/</span></span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="comment">/*</span></span><br><span class="line"><span class="comment">    	不论新路径的出点是否与原最短路相同</span></span><br><span class="line"><span class="comment">    	在满足三角形不等式的条件下 都一定用新路径更新最短路</span></span><br><span class="line"><span class="comment">        最短路的出点改为新路径的出点</span></span><br><span class="line"><span class="comment">    	*/</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">else</span> <span class="keyword">if</span> (dist + w(u,v) &lt; dis2(v)) &#123;<span class="comment">//当前v的次短路可被更新</span></span><br><span class="line">		<span class="keyword">if</span> (ori(u) != ori(v)) &#123;</span><br><span class="line">       		<span class="comment">/*</span></span><br><span class="line"><span class="comment">       		新路径与最短路的出点不同</span></span><br><span class="line"><span class="comment">       		可以用来更新次短路</span></span><br><span class="line"><span class="comment">            同时次短路的出点改为新路径的出点</span></span><br><span class="line"><span class="comment">       		*/</span></span><br><span class="line">    	&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">update(dis(u));<span class="comment">//尝试用u的最短路去更新</span></span><br><span class="line">update(dis2(u));<span class="comment">//尝试用u的次短路去更新</span></span><br></pre></td></tr></table></figure>
+
+<p>其余部分与<code>dijkstra</code>流程相同，不再赘述</p>
+<h3 id="性能分析"><a href="#性能分析" class="headerlink" title="性能分析"></a>性能分析</h3><p>通过上述实现，我们可以做一遍<code>dijkstra</code>就求出以x为源点的单源最短路和单源带限制次短路</p>
+<p>然后逐个枚举每个点，用最短路+次短路更新答案即可</p>
+<p>一次询问中，上述复杂度为$O(n+n^2)$的, 当然，<code>dijkstra</code>的过程可以用优先队列去优化</p>
+<p>优化后单次询问复杂度为$O(n+mlog\space n)$</p>
+<h3 id="个人反思"><a href="#个人反思" class="headerlink" title="个人反思"></a>个人反思</h3><p>在上述算法中跑完一遍<code>dijkstra</code>后, 我们枚举每个点尝试用其最短路+次短路更新答案，但是这里似乎还有优化空间，枚举范围其实可以缩小为与源点x直接相连的顶点集。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>以上是我就本次作业中<code>queryLeastMoment</code>方法一个实现思路分享，个人水平有限，上述内容如有错误，还望不吝指出</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="Srch_">Srch_</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/">http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://srchycz.github.io" target="_blank">Srch's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="/img/avatar.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/04/25/hello-world/" title="Hello World"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hello World</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/avatar.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Srch_</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">1</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/Srchycz"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Srchycz" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="mailto:2982296464@qq.com" target="_blank" title="Email"><i class="fas fa-envelope" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">你必须沿一条没有狂喜的路走，为了来到你所不知道的地方。</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%AD%94%E6%94%B9-dijkstra"><span class="toc-number">1.</span> <span class="toc-text">魔改 dijkstra</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">算法描述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%86%E8%8A%82"><span class="toc-number">1.2.</span> <span class="toc-text">实现细节</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dijkstra%E6%B5%81%E7%A8%8B%E5%9B%9E%E9%A1%BE%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">dijkstra流程回顾：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">1.2.2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">更新</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">性能分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AA%E4%BA%BA%E5%8F%8D%E6%80%9D"><span class="toc-number">1.4.</span> <span class="toc-text">个人反思</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">2.</span> <span class="toc-text">总结</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/" title="Dijkstra求无向图过某点最小环">Dijkstra求无向图过某点最小环</a><time datetime="2023-05-11T16:00:00.000Z" title="发表于 2023-05-12 00:00:00">2023-05-12</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2023/04/25/hello-world/" title="Hello World">Hello World</a><time datetime="2023-04-25T10:45:18.867Z" title="发表于 2023-04-25 18:45:18">2023-04-25</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 By Srch_</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">未尝试荒谬，难成就非凡</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
