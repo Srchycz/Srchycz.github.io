@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://srchycz.github.io/categories/index.html</loc>
+    
+    <lastmod>2023-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://srchycz.github.io/tags/index.html</loc>
+    
+    <lastmod>2023-05-28</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://srchycz.github.io/2023/05/28/singleton/</loc>
+    
+    <lastmod>2023-05-27</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/</loc>
     
     <lastmod>2023-05-11</lastmod>
@@ -22,17 +49,31 @@
 
   <url>
     <loc>http://srchycz.github.io/</loc>
-    <lastmod>2023-05-22</lastmod>
+    <lastmod>2023-05-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
   
+  <url>
+    <loc>http://srchycz.github.io/tags/Design-Pattern/</loc>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>http://srchycz.github.io/categories/Algorithm/</loc>
-    <lastmod>2023-05-22</lastmod>
+    <lastmod>2023-05-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://srchycz.github.io/categories/Object-Oriented/</loc>
+    <lastmod>2023-05-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
