@@ -5,5 +5,5 @@ http://srchycz.github.io/2023/05/12/%E6%9C%80%E5%B0%8F%E7%8E%AF/
 http://srchycz.github.io/2023/04/25/hello-world/
 http://srchycz.github.io/
 http://srchycz.github.io/tags/Design-Pattern/
-http://srchycz.github.io/categories/Algorithm/
 http://srchycz.github.io/categories/Object-Oriented/
+http://srchycz.github.io/categories/Algorithm/
